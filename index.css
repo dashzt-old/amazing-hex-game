@@ -1,0 +1,103 @@
+#field {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin: 0px 10px -15px 10px;
+  transform: rotate3d(1, 0, 0, 23deg);
+}
+
+#game-board {
+  display: flex;
+}
+
+#game-board-inner {
+  display: flex;
+  flex-direction: column;
+}
+
+#left, #right {
+  width: 100px;
+  background-color: #1284ba;
+  margin: 100px 0;
+}
+
+#top, #bottom {
+  height: 100px;
+  background-color: #dd01cc;
+}
+
+
+#field .row { 
+  display: flex;
+  margin-top: -17px;
+}
+
+#field .row:nth-child(2n + 1) {
+  margin-left: 32px;
+}
+
+.hexagon {
+  position: relative;
+  width: 60px; 
+  height: 34.64px;
+  background-color: gray;
+  margin: 19px 3px 19px 3px;
+  transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+  box-shadow: 2px 1px 10px 2px thistle; 
+}
+
+.hexagon:before,
+.hexagon:after {
+  content: "";
+  position: absolute;
+  width: 0;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+}
+
+.hexagon:before {
+  bottom: 100%;
+  border-bottom: 17.32px solid gray;
+}
+
+.hexagon:after {
+  top: 100%;
+  width: 0;
+  border-top: 17.32px solid gray;
+}
+
+
+.hexagon:hover {
+  transform: scale(1.1);
+}
+
+#turn {
+  width: 50px;
+  height: 50px;
+}
+
+.player1 {
+  background-color: #1284ba;
+}
+
+.player2 {
+  background-color: #dd01cc;
+}
+
+.hexagon.player1:before {
+  border-bottom: 17.32px solid #1284ba;
+}
+.hexagon.player1:after {
+  border-top: 17.32px solid #1284ba;
+}
+
+.hexagon.player2:before {
+  border-bottom: 17.32px solid #dd01cc;
+}
+.hexagon.player2:after {
+  border-top: 17.32px solid #dd01cc;
+}
+
+.hexagon.highlight {
+  background-color: yellow;
+}
