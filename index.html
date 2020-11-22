@@ -1,9 +1,9 @@
 <head>
-  <script src='./index.js' async></script>
   <link rel='stylesheet' href='./index.css'>
 </head>
 
 <body>
+  Gameroom id: <input id='gameroom-id' value='test'/><button id='gameroom-join'>JOIN</button>
   <div id='game-board'>
     <div id='left'></div>
     <div id='game-board-inner'>
@@ -13,7 +13,9 @@
     </div>
     <div id='right'></div>
   </div>
-  Current turn: <div id='turn' class='player1'>
+  <div id='current-turn'></div>
 
   </div>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.1/socket.io.js'></script>
+  <script src='./index.js'></script>
 </body>
