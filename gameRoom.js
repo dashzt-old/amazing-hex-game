@@ -27,9 +27,9 @@ class GameRoom {
 
   addPlayer(userId) {
     if (this.players.includes(userId)) events.onRoomJoin(this.roomName, userId, this.gameField, this.players.findIndex(x => x === userId) + 1)
-    if (this.players.length === 1) return
+    if (this.players.length === 2) return
     this.players.push(userId)
-    if (this.players.length === 1) {
+    if (this.players.length === 2) {
       this.currentTurn = this.players[0]
       events.onTurnChange(this.roomName, this.currentTurn)
     }
@@ -42,7 +42,6 @@ class GameRoom {
     this.gameField[lastPoint.row][lastPoint.col] = userId
     events.onFieldUpdated(this.roomName, [{ ...lastPoint, value: userId }])
 
-    console.log('@@@@@@@@@@@@@')
     const getPointValue =(point) => this.gameField[point.row][point.col]
     const getNeighbourPoints = (point) => {
       return [
@@ -65,8 +64,6 @@ class GameRoom {
     const combineIntoPath = (paths) => {
       let pointCombined = false
       let firstCombinedPathIndex = undefined
-      console.log('-------------------')
-      console.log('paths --->', paths)
       paths.forEach((path, pathIndex) => {
         path.forEach(point => {
           if (pointCombined) return
@@ -110,7 +107,6 @@ class GameRoom {
       })
     }
 
-    console.log(this.player1Paths)
     if (this.players[0] === this.currentTurn) {
       if(checkWinningPath(this.player1Paths, { isHorizontal: true })) {
         events.onGameWin(this.roomName, this.currentTurn)
@@ -153,7 +149,7 @@ module.exports = {
     if (!gameRooms[roomName].makeTurn(userId, point)) return
     gameRooms[roomName].checkWinningPath()
     if (!gameRooms[roomName]) return
-    // gameRooms[roomName].changeTurn()
+    gameRooms[roomName].changeTurn()
   },
   registerEvent: (name, cb) => {
     events[name] = cb
