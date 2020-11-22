@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node server-index.js",
-    "dev": "node-dev --respawn server-index.js"
+    "dev": "PORT=3000 node-dev --respawn server-index.js"
   },
   "author": "DashZT",
   "license": "UNLICENSED",
